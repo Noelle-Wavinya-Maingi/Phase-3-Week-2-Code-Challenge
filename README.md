@@ -92,3 +92,31 @@ Initializers, Readers, and Writers
 - `Restaurant average_star_rating()`
   - returns the average star rating for a restaurant based on its reviews
   - Reminder: you can calculate the average by adding up all the ratings and dividing by the number of ratings
+
+### Project Setup
+Ensure that you have Python3 installed on your machine to run the solutions
+
+1. Clone this repository to your local machine.
+```sh
+git@github.com:Noelle-Wavinya-Maingi/Phase-3-Week-2-Code-Challenge.git
+```
+
+2. Open a terminal or command prompt.
+
+3. Navigate to the directory containing the repository.
+
+4. Choose the test you want to run:
+    - For customer related test cases:  Run:
+    ```sh 
+    python3 Customer.py 
+    ```
+
+     - For restaurant related test cases:  Run:
+     ```sh 
+     python3 Restaurant.py 
+     ```
+
+6. The solution will execute and display the results on the terminal.
+
+### Author
+The author of the code challenge solution is Noelle Maingi.
