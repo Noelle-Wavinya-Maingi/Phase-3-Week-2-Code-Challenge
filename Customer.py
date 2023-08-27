@@ -42,6 +42,7 @@ customer1 = Customer("John", "Doe")
 customer2 = Customer("Jane", "Smith")
 customer3 = Customer('Mary', 'John')
 
+
 print(customer1.get_first_name())  # Output: John
 print(customer1.get_last_name())  #Output: Doe
 # print(customer1.full_name())
@@ -55,7 +56,7 @@ for customer in all_customers:
     print(customer.full_name())
 
 try:
-    customer4 = Customer(123, "Smith")
+    customer4 = Customer("123", "Smith")
 except ValueError as e:
     print(e)
 
