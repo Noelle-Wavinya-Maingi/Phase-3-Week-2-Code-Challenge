@@ -80,6 +80,7 @@ class Customer:
 customer1 = Customer("John", "Doe")
 customer2 = Customer("Jane", "Smith")
 customer3 = Customer('Mary', 'John')
+customer5 = Customer("John", "Doe")
 
 
 print(customer1.get_first_name())  # Output: John
@@ -99,15 +100,15 @@ print("Restaurants reviewed by customer2:", [restaurant.name() for restaurant in
 
 print ("Number of reviews by customer1 is:",customer1.num_reviews(), "reviews.")
 
-find_customer = Customer.find_by_fullname("John Does")
+find_customer = Customer.find_by_fullname("John Doe")
 if find_customer:
     print("Found customer: ", find_customer.full_name())
 else:
     print("Customer not found!")
 
-mactching_name = Customer.find_by_first_name("Jane")
-for customer in mactching_name:
-    print("Matching customer: ", customer.full_name())
+mactching_name = Customer.find_by_first_name("John")
+matching_name_list = [customer.full_name() for customer in mactching_name]
+print("Matching customer: ", matching_name_list)
 
 try:
     customer4 = Customer("123", "Smith")
