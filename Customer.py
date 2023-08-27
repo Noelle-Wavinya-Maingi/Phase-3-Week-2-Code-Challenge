@@ -50,11 +50,33 @@ class Customer:
         self._reviews.append(review)
         restaurant.add_review(review)
 
+    def num_reviews(self):
+        return len(self._reviews)
+    
+#A class method to find customers by full name
+    @classmethod
+    def find_by_fullname(cls, fullname):
+        for customer in cls.all_customers:
+            if customer.full_name() == fullname:
+                return customer
+        return None
+
+#A class method to find customers by first name
+    @classmethod
+    def find_by_first_name(cls, firstname):
+        matching_name =[]
+        for customer in cls.all_customers:
+            if customer.get_first_name() == firstname:
+                matching_name.append(customer)
+        return matching_name
+
 # A class method to return all the customer instances.
     @classmethod
     def all(cls):
         return cls.all_customers
 
+
+#Test Cases
 customer1 = Customer("John", "Doe")
 customer2 = Customer("Jane", "Smith")
 customer3 = Customer('Mary', 'John')
@@ -74,6 +96,18 @@ for customer in all_customers:
 
 print("Restaurants reviewed by customer1:", [restaurant.name() for restaurant in customer1.restaurants()])
 print("Restaurants reviewed by customer2:", [restaurant.name() for restaurant in customer2.restaurants()])
+
+print ("Number of reviews by customer1 is:",customer1.num_reviews(), "reviews.")
+
+find_customer = Customer.find_by_fullname("John Does")
+if find_customer:
+    print("Found customer: ", find_customer.full_name())
+else:
+    print("Customer not found!")
+
+mactching_name = Customer.find_by_first_name("Jane")
+for customer in mactching_name:
+    print("Matching customer: ", customer.full_name())
 
 try:
     customer4 = Customer("123", "Smith")
