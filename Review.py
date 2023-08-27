@@ -4,7 +4,7 @@ class Review:
 
     # Initialize a review object with a customer, restaurant, and rating
     def __init__(self, customer, restaurant, rating):
-        if type(rating) != int or type(rating) != float:
+        if type(rating) != int and type(rating) != float:
             raise ValueError("Rating should be a number")
         
         self._customer = customer
