@@ -1,13 +1,17 @@
+from Review import Review
+from Restaurant import Restaurant1, Restaurant2
+
 #Define the customer class and class attribute to store all the customer instances
 class Customer:
     all_customers = []
 
-# Define a constructor method to initialize the customer object and initialize the first name and lass name then add the instance to the all_customers list.
+# Define a constructor method to initialize the customer object and initialize the first name and last name then add the instance to the all_customers list.
     def __init__(self, first_name, last_name):
         if type(first_name) != str or type(last_name) != str:
             raise ValueError("Your first and last name should be a string!")
         self._first_name = first_name
         self._last_name = last_name
+        self._reviews = [] #a list to store reviews given by a customer
         Customer.all_customers.append(self)
 
 # Define a method to retrieve the first name of the customer
@@ -33,6 +37,19 @@ class Customer:
     def full_name(self):
         return f"{self._first_name} {self._last_name}"
     
+#Define a method to get the list of restaurants the customer has reviewed and add a review for a restaurant.
+    def restaurants(self):
+        restaurant_set = set()
+        for review in Review.all():
+            if review.customer() == self:
+                restaurant_set.add(review.restaurant())
+        return list(restaurant_set)
+    
+    def add_review(self, restaurant, rating):
+        review = Review(self, restaurant, rating)
+        self._reviews.append(review)
+        restaurant.add_review(review)
+
 # A class method to return all the customer instances.
     @classmethod
     def all(cls):
@@ -47,16 +64,18 @@ print(customer1.get_first_name())  # Output: John
 print(customer1.get_last_name())  #Output: Doe
 # print(customer1.full_name())
 
-customer1.set_first_name("Alice")
-customer1.set_last_name("Johnson")
-# print(customer1.full_name())
+customer1.add_review(Restaurant1, 3)
+customer1.add_review(Restaurant2, 5)
+customer2.add_review(Restaurant1, 4.5)
 
 all_customers = Customer.all()
 for customer in all_customers:
     print(customer.full_name())
 
+print("Restaurants reviewed by customer1:", [restaurant.name() for restaurant in customer1.restaurants()])
+print("Restaurants reviewed by customer2:", [restaurant.name() for restaurant in customer2.restaurants()])
+
 try:
     customer4 = Customer("123", "Smith")
 except ValueError as e:
     print(e)
-
