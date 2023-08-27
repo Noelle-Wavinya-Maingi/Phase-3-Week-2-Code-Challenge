@@ -119,4 +119,4 @@ git@github.com:Noelle-Wavinya-Maingi/Phase-3-Week-2-Code-Challenge.git
 6. The solution will execute and display the results on the terminal.
 
 ### Author
-The author of the code challenge solution is Noelle Maingi.
+The author of the code challenge solution is [Noelle Maingi.](https://github.com/Noelle-Wavinya-Maingi)
