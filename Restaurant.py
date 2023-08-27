@@ -27,6 +27,16 @@ class Restaurant:
         for review in self._reviews:
             customer_set.add(review.customer())
         return list(customer_set)
+    
+#A method to calculate and return the average star rating for the restaurants reviews    
+    def average_star_rating(self):
+        total_rating = sum([review.rating()for review in self._reviews])
+        num_rating = len(self._reviews)
+
+        if num_rating == 0:
+            return 0
+        else:
+            return total_rating / num_rating
 
 #Restaurant instances  
 Restaurant1 = Restaurant("Cafe Deli")
@@ -35,10 +45,12 @@ Restaurant2 = Restaurant("The Bistro")
 #Review instances
 review1 = Review("John Doe", Restaurant1, 4)
 review2 = Review("Jane Smith", Restaurant2, 4.5)
+review3 = Review("John Doe", Restaurant2, 5)
 
 #Add reviews to the respective restaurants
 Restaurant1.add_review(review1)
 Restaurant2.add_review(review2)
+Restaurant2.add_review(review3)
 
 #Prints restaurant names
 print(Restaurant1.name())
@@ -51,3 +63,6 @@ print("Reviews for Restaurant2:", [review.rating() for review in Restaurant2.rev
 #Print customers who reviewed each restaurant
 print("Customers who reviewed Restaurant1:", Restaurant1.customers())
 print("Customers who reviewed Restaurant2:", Restaurant2.customers())
+
+print(f"Average star rating for {Restaurant1.name()}: {Restaurant1.average_star_rating()}")
+print(f"Average star rating for {Restaurant2.name()}: {Restaurant2.average_star_rating()}")
